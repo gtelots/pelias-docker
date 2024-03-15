@@ -20,7 +20,7 @@ set -x
 # Clone 
 git clone https://github.com/gtelots/pelias-docker.git && cd pelias-docker
 
-# Cài đặt và set up pelias
+# Sao chép mã nguồn của Pelias từ GitHub và chuyển đến thư mục vừa sao chép.
 sudo ln -s "$(pwd)/pelias" /usr/local/bin/pelias
 
 # cd vào project
@@ -31,26 +31,36 @@ mkdir ./data
 sed -i '/DATA_DIR/d' .env
 echo 'DATA_DIR=./data' >> .env
 
-# pull và down các thư mục cần thiết 
+# Pull và down các thư mục cần thiết 
 pelias compose pull
+
+# khởi động Elasticsearch,
 pelias elastic start
+
+# Đợi Elasticsearch hoạt động
 pelias elastic wait
+
+# Tạo các chỉ mục Elasticsearch cần thiết cho Pelias
 pelias elastic create
+
+# Tải xuống dữ liệu địa lý 
 pelias download all
+
+# Chuẩn bị dữ liệu Địa lý tải xuống nhập vào Elasticsearch
 pelias prepare all
 
-# Chuẩn bị file csv theo định dạng mẫu của pelias bạn có thể xem trong data/csv/example.csv (example.csv sẽ được tạo khi sử dụng pelias download all) 
+# Import dữ liệu csv
 pelias import csv
+
+# Khởi động các container trong pelias 
 pelias compose up
 
-# Có thể chạy kiểm thử 
-pelias test run
 ```
 
 # Make an Example Query
 
 Bây giờ bạn có thể thực hiện truy vấn đối với bản dựng Pelias mới của mình::
 
-http://localhost:4000/v1/search?text=pdx
+http://localhost:4000/v1/search?text=47A
 
-http://localhost:4000/v1/reverse?point.lon=-122.650095&point.lat=45.533467
+http://localhost:4000/v1/reverse?point.lon=106.68298995700007&point.lat=10.766220241000042
