@@ -63,4 +63,4 @@ Bây giờ bạn có thể thực hiện truy vấn đối với bản dựng Pe
 
 http://localhost:4000/v1/search?text=47A
 
-http://localhost:4000/v1/reverse?point.lon=106.68298995700007&point.lat=10.766220241000042
+http://localhost:4000/v1/reverse?point.lon=106.68298995700007&point.lat=10.7662202410000423
