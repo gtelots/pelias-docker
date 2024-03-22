@@ -6,6 +6,11 @@ startup:
 	pelias elastic create
 	pelias download all
 	pelias prepare all
+	pelias import all
+	pelias compose up -d
+
+up:
+	pelias compose up -d
 
 clean:
 	pelias compose down -v
