@@ -1,3 +1,7 @@
 [submodule "projects/planet/acceptance-tests"]
 	path = projects/planet/acceptance-tests
 	url = https://github.com/pelias/acceptance-tests.git
+[submodule "projects/vietnam/api"]
+	path = projects/vietnam/api
+	url = https://github.com/gtelots/pelias-api.git
+	branch = dev
