@@ -3,6 +3,9 @@ version: '3'
 networks:
   default:
     driver: bridge
+  backend-net:
+    external: true
+
     
 services:
   ### Libpostal ##################################
@@ -12,6 +15,8 @@ services:
     user: "${DOCKER_USER}"
     restart: always
     ports: [ "127.0.0.1:4400:4400" ]
+    networks:
+      - default
 
   ### Schema ##################################
   schema:
@@ -20,6 +25,8 @@ services:
     user: "${DOCKER_USER}"
     volumes:
       - "./pelias.json:/code/pelias.json"
+    networks:
+      - default
 
   ### API ##################################
   api:
@@ -31,6 +38,9 @@ services:
     ports: [ "0.0.0.0:${PELIAS_API_PORT}:4000" ]
     volumes:
       - "./pelias.json:/code/pelias.json"
+    networks:
+      - default
+      - backend-net
 
   ### Placeholder ##################################
   placeholder:
@@ -44,6 +54,8 @@ services:
       - "./pelias.json:/code/pelias.json"
       - "${DATA_DIR}:/data"
       - "./blacklist/:/data/blacklist"
+    networks:
+      - default
 
   ### Whosonfirst ##################################
   whosonfirst:
@@ -54,6 +66,8 @@ services:
       - "./pelias.json:/code/pelias.json"
       - "${DATA_DIR}:/data"
       - "./blacklist/:/data/blacklist"
+    networks:
+      - default
 
   ### Openstreetmap ##################################
   openstreetmap:
@@ -64,6 +78,8 @@ services:
       - "./pelias.json:/code/pelias.json"
       - "${DATA_DIR}:/data"
       - "./blacklist/:/data/blacklist"
+    networks:
+      - default
 
   ### Openaddresses ##################################
   openaddresses:
@@ -74,6 +90,8 @@ services:
       - "./pelias.json:/code/pelias.json"
       - "${DATA_DIR}:/data"
       - "./blacklist/:/data/blacklist"
+    networks:
+      - default
 
   ### Transit ##################################
   transit:
@@ -83,6 +101,8 @@ services:
     volumes:
       - "./pelias.json:/code/pelias.json"
       - "${DATA_DIR}:/data"
+    networks:
+      - default
 
   ### CSV Import ##################################
   csv-importer:
@@ -93,6 +113,8 @@ services:
       - "./pelias.json:/code/pelias.json"
       - "${DATA_DIR}:/data"
       - "./blacklist/:/data/blacklist"
+    networks:
+      - default
 
   ### Polylines ##################################
   polylines:
@@ -102,6 +124,8 @@ services:
     volumes:
       - "./pelias.json:/code/pelias.json"
       - "${DATA_DIR}:/data"
+    networks:
+      - default
 
   ### Interpolation ##################################
   interpolation:
@@ -114,6 +138,8 @@ services:
     volumes:
       - "./pelias.json:/code/pelias.json"
       - "${DATA_DIR}:/data"
+    networks:
+      - default
 
   ### Pip ##################################
   pip:
@@ -126,6 +152,8 @@ services:
     volumes:
       - "./pelias.json:/code/pelias.json"
       - "${DATA_DIR}:/data"
+    networks:
+      - default
 
   ### Elasticsearch ##################################
   elasticsearch:
@@ -144,6 +172,8 @@ services:
         soft: 65536
         hard: 65536
     cap_add: [ "IPC_LOCK" ]
+    networks:
+      - default
 
   ### Fuzzy-tester ##################################
   fuzzy-tester:
@@ -155,3 +185,5 @@ services:
     volumes:
       - "./pelias.json:/code/pelias.json"
       - "./test_cases:/code/pelias/fuzzy-tester/test_cases"
+    networks:
+      - default

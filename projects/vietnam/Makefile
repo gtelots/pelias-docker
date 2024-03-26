@@ -1,5 +1,5 @@
 startup:
-	./startup.sh
+	mkdir -p ./data
 	pelias compose pull
 	pelias elastic start
 	pelias elastic wait
@@ -15,4 +15,14 @@ up:
 clean:
 	pelias compose down -v
 	rm -rf ./data
+
+reimport-csv:
+	pelias compose kill elasticsearch
+	rm -rf data/elasticsearch
+	pelias elastic start
+	pelias elastic wait
+	pelias elastic create
+	pelias import csv
+	pelias compose up -d elasticsearch
+
 
