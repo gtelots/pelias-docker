@@ -48,7 +48,7 @@
       "datapath": "/data/csv",
       "files": [],
       "download": [
-        "https://raw.githubusercontent.com/pelias/csv-importer/master/data/example.csv"
+        "https://raw.githubusercontent.com/gtelots/csv-importer/master/data/example.csv"
       ]
     },
     "geonames": {
