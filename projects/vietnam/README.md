@@ -54,3 +54,13 @@ Bây giờ bạn có thể thực hiện truy vấn đối với bản dựng Pe
 http://localhost:4000/v1/search?text=pdx
 
 http://localhost:4000/v1/reverse?point.lon=-122.650095&point.lat=45.533467
+
+## Countries
+List 1:
+
+`["TH", "SG", "MY", "BN", "ID", "PH"]`
+
+List 2:
+
+`["KH", "LA", "CN"]`
+
