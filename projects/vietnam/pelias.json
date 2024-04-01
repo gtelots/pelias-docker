@@ -31,8 +31,8 @@
       "libpostal": { "url": "http://libpostal:4400" }
     },
     "defaultParameters": {
-      "focus.point.lat": 10.7685558,
-      "focus.point.lon": 106.692352      
+      "focus.point.lat": 10.77528587850000008,
+      "focus.point.lon": 106.69969573162079257    
     }
   },
   "imports": {
@@ -78,10 +78,7 @@
     "whosonfirst": {
       "datapath": "/data/whosonfirst",
       "importPostalcodes": true,
-      "countryCode": "VN",
-      "importPlace": [
-        "85632763"
-      ]
+      "countryCode": ["VN", "LA", "KH", "CN"]
     }   
   }
 }
