@@ -30,7 +30,7 @@ services:
 
   ### API ##################################
   api:
-    image: pelias/api:master
+    image: ttungbmt/pelias-api:latest
     container_name: pelias_api
     user: "${DOCKER_USER}"
     restart: always
