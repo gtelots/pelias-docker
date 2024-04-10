@@ -25,4 +25,11 @@ reimport-csv:
 	pelias import csv
 	pelias compose up -d elasticsearch
 
+api-build:
+	docker build -t ttungbmt/pelias-api:latest ./api
+	docker tag ttungbmt/pelias-api:latest ttungbmt/pelias-api:latest
+
+api-push:
+	docker push ttungbmt/pelias-api:latest
+
 
