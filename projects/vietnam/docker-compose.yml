@@ -25,6 +25,8 @@ services:
     user: "${DOCKER_USER}"
     volumes:
       - "./pelias.json:/code/pelias.json"
+      - "./synonyms/custom_name.txt:/code/pelias/schema/synonyms/custom_name.txt"
+      - "./synonyms/custom_street.txt:/code/pelias/schema/synonyms/custom_street.txt"
     networks:
       - default
 
@@ -38,6 +40,8 @@ services:
     ports: [ "0.0.0.0:${PELIAS_API_PORT}:4000" ]
     volumes:
       - "./pelias.json:/code/pelias.json"
+      - "./api:/code/pelias/api"
+      - "/code/pelias/api/node_modules"
     networks:
       - default
       - backend-net

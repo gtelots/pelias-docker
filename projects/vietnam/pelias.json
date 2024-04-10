@@ -46,7 +46,7 @@
     },
     "csv": {
       "datapath": "/data/csv",
-      "files": [],
+      "files": ["addr_iotl_pc_pt_79 addr.csv"],
       "download": [
         "https://raw.githubusercontent.com/gtelots/csv-importer/master/data/example.csv"
       ]
