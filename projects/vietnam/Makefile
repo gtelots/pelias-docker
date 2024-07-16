@@ -22,7 +22,7 @@ reimport-csv:
 	pelias elastic start
 	pelias elastic wait
 	pelias elastic create
-	pelias import csv
+	pelias import all
 	pelias compose up -d elasticsearch
 
 api-build:
