@@ -33,6 +33,9 @@
     "defaultParameters": {
       "focus.point.lat": 10.77528587850000008,
       "focus.point.lon": 106.69969573162079257    
+    },
+    "targets": {
+      "auto_discover": true
     }
   },
   "imports": {
